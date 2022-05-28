@@ -13,7 +13,7 @@ import mmcv
 from .parrots_wrapper import get_build_config
 
 
-def collect_env():
+def collect_env() -> dict:
     """Collect the information of the running environments.
 
     Returns:

@@ -211,8 +211,8 @@ class Config:
                     name: value
                     for name, value in mod.__dict__.items()
                     if not name.startswith('__')
-                    and not isinstance(value, types.ModuleType)
-                    and not isinstance(value, types.FunctionType)
+                       and not isinstance(value, types.ModuleType)
+                       and not isinstance(value, types.FunctionType)
                 }
                 # delete imported module
                 del sys.modules[temp_module_name]
@@ -226,13 +226,13 @@ class Config:
         if DEPRECATION_KEY in cfg_dict:
             deprecation_info = cfg_dict.pop(DEPRECATION_KEY)
             warning_msg = f'The config file {filename} will be deprecated ' \
-                'in the future.'
+                          'in the future.'
             if 'expected' in deprecation_info:
                 warning_msg += f' Please use {deprecation_info["expected"]} ' \
-                    'instead.'
+                               'instead.'
             if 'reference' in deprecation_info:
                 warning_msg += ' More information can be found at ' \
-                    f'{deprecation_info["reference"]}'
+                               f'{deprecation_info["reference"]}'
             warnings.warn(warning_msg, DeprecationWarning)
 
         cfg_text = filename + '\n'
@@ -275,7 +275,7 @@ class Config:
         return cfg_dict, cfg_text
 
     @staticmethod
-    def _merge_a_into_b(a, b, allow_list_keys=False):
+    def _merge_a_into_b(a: dict, b: dict, allow_list_keys: bool = False) -> dict:
         """merge dict ``a`` into dict ``b`` (non-inplace).
 
         Values in ``a`` will overwrite ``b``. ``b`` is copied first to avoid
